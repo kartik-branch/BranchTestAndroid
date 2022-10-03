@@ -47,6 +47,25 @@ public class MainActivity extends AppCompatActivity {
             // do stuff with deep link data (nav to page, display content, etc)
             Log.d("APPPPP", "onInitFinished: "+linkProperties);
             textView.setText(linkProperties.toString());
+         
+            LinkProperties lp = new LinkProperties()
+        .setChannel("facebook")
+        .setFeature("sharing")
+        .setCampaign("content 123 launch")
+        .setStage("new user")
+        .addControlParameter("$desktop_url", "https://example.com/home")
+        .addControlParameter("custom", "data")
+        .addControlParameter("custom_random", Long.toString(Calendar.getInstance().getTimeInMillis()));
+
+    buo.generateShortUrl(this, lp, new Branch.BranchLinkCreateListener() {
+        @Override
+        public void onLinkCreate(String url, BranchError error) {
+            if (error == null) {
+                Log.i("BRANCH SDK", "got my Branch link to share: " + url);
+            }
+        }
+    });
+            
         }
     };
 }

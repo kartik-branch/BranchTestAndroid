@@ -22,6 +22,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         textView = findViewById(R.id.textView);
+        BranchUniversalObject buo = new BranchUniversalObject()
+        .setCanonicalIdentifier("content/12345")
+        .setTitle("My Content Title")
+        .setContentDescription("My Content Description")
+        .setContentImageUrl("https://lorempixel.com/400/400")
+        .setContentIndexingMode(BranchUniversalObject.CONTENT_INDEX_MODE.PUBLIC)
+        .setLocalIndexMode(BranchUniversalObject.CONTENT_INDEX_MODE.PUBLIC)
+        .setContentMetadata(new ContentMetadata().addCustomMetadata("key1", "value1"));
+
     }
 
     @Override
